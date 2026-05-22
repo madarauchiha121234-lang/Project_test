@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student CRUD API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <h1 class="text-2xl font-bold mb-6">Student CRUD API</h1>
+
+    <!-- Add Modal Button -->
+    <button class="bg-green-500 text-white px-4 py-2 rounded mb-4">
+      Add Student
+    </button>
+
+    <!-- Add Modal -->
+    <div
+      id="addModal"
+      class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center"
+    >
+      <form class="bg-white p-6 rounded shadow w-96 relative">
+        <h2 class="text-xl font-bold mb-4">Add Student</h2>
+        <div class="space-y-2">
+          <input
+            id="add_name"
+            class="border p-2 w-full"
+            placeholder="Name"
+            required
+          />
+          <input
+            id="add_email"
+            class="border p-2 w-full"
+            placeholder="Email"
+            required
+          />
+          <select id="add_gender" class="border p-2 w-full" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <input id="add_dob" type="date" class="border p-2 w-full" required />
+        </div>
+        <div class="mt-4 flex justify-end space-x-2">
+          <button class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+          <button
+            type="submit"
+            class="px-4 py-2 bg-blue-500 text-white rounded"
+          >
+            Save
+          </button>
+        </div>
+        <span class="absolute top-2 right-3 cursor-pointer text-gray-500"
+          >&times;</span
+        >
+      </form>
+    </div>
+
+    <!-- Update Modal -->
+    <div
+      id="updateModal"
+      class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center"
+    >
+      <form class="bg-white p-6 rounded shadow w-96 relative">
+        <h2 class="text-xl font-bold mb-4">Update Student</h2>
+        <div class="space-y-2">
+          <input type="hidden" id="update_id" />
+          <input
+            id="update_name"
+            class="border p-2 w-full"
+            placeholder="Name"
+            required
+          />
+          <input
+            id="update_email"
+            class="border p-2 w-full"
+            placeholder="Email"
+            required
+          />
+          <select id="update_gender" class="border p-2 w-full" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <input
+            id="update_dob"
+            type="date"
+            class="border p-2 w-full"
+            required
+          />
+        </div>
+        <div class="mt-4 flex justify-end space-x-2">
+          <button class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+          <button
+            type="submit"
+            class="px-4 py-2 bg-blue-500 text-white rounded"
+          >
+            Update
+          </button>
+        </div>
+        <span class="absolute top-2 right-3 cursor-pointer text-gray-500"
+          >&times;</span
+        >
+      </form>
+    </div>
+
+    <!-- Students Table -->
+    <table class="w-full bg-white shadow mb-6">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="p-2">ID</th>
+          <th class="p-2">Name</th>
+          <th class="p-2">Email</th>
+          <th class="p-2">Gender</th>
+          <th class="p-2">DOB</th>
+          <th class="p-2">Action</th>
+        </tr>
+      </thead>
+      <tbody id="students">
+        <tr>
+          <td class="p-2 text-center">1</td>
+          <td class="p-2 text-center">John Doe1</td>
+          <td class="p-2 text-center">johndoe1@gmail.com</td>
+          <td class="p-2 text-center">Male</td>
+          <td class="p-2 text-center">01-01-2001</td>
+          <td class="p-2 text-center space-x-2">
+            <button class="bg-yellow-400 px-2 py-1 rounded">Update</button>
+            <button class="bg-red-500 text-white px-2 py-1 rounded">
+              Delete
+            </button>
+          </td>
+        </tr> 
+      </tbody>
+      <tfoot class="bg-gray-200">
+        <tr>
+          <th colspan="6" class="p-2 text-start">
+            Total: <span id="totalStudents">3</span> Students
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+    <script src="script.js"></script>
+  </body>
+</html>
